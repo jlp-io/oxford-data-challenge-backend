@@ -1,0 +1,7 @@
+Flask-WTF
+WTForms
+coverage
+requests
+# ecdsa
+# paramiko
+# pycrypto
