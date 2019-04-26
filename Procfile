@@ -1,1 +1,2 @@
-worker: python app.py -log-file -
+web: python app.py 
+worker: python app.py 
