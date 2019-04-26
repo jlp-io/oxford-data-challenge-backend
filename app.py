@@ -71,7 +71,7 @@ def get_university_list():
     }
     return create_response(data)
 
-@app.route('/')
+@app.route('/about')
 def about():
     return render_template('templates/pages/index.html')
 
