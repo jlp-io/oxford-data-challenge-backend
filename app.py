@@ -63,15 +63,7 @@ def get_country_data(country):
     data['countryData'] = country_data
     return create_response(data)
 
-@app.route('/getUniversityEarnings', methods=['GET'])
-def get_university_list():
-    df = pd.DataFrame(data_set, columns = ['providerName'])
-    data = {
-        'name': str(df)
-    }
-    return create_response(data)
-
-@app.route('/about')
+@app.route('/')
 def about():
     return render_template('templates/pages/index.html')
 
@@ -89,76 +81,6 @@ def register():
 def forgot():
     form = ForgotForm(request.form)
     return render_template('forms/forgot.html', form=form)
-
-@app.route('/mirror/<name>')
-def mirror(name):
-    data = {
-        'name': name
-    }
-    return create_response(data)
-
-@app.route('/users', methods = ['GET'])
-def users():
-    if ('team' in request.args):
-        team = request.args.get('team')
-        data = db.get('users')
-        ret = []
-        for item in data:
-            if (item['team'] == team):
-                ret.append(item)
-        return create_response(ret)
-    else:
-        data = db.get('users')
-        return create_response(data)
-
-@app.route('/users/<userID>', methods = ['GET'])
-def usersID(userID):
-    data = db.get('users')
-    if (int(userID) > len(data) or int(userID) <= 0):
-        return create_response({}, 404, 'No such user exists!')
-    else:
-        user = data[int(userID)-1]
-        return create_response(user)
-
-@app.route('/users', methods = ['POST'])
-def createUser():
-    if all(k in request.get_json() for k in ('team', 'name', 'age')):
-        newUser = request.get_json()
-        print(newUser)
-        createdUser = db.create('users', newUser)
-        return create_response(createdUser, 201, 'User created successfully')
-    else:
-        return create_response({}, 422, 'User couldn\'t be created!')
-
-@app.route('/users/<userID>', methods = ['PUT'])
-def updateUser(userID):
-    request_json = request.get_json()
-    data = {}
-    try:
-        data['name'] = request_json['name']
-    except:
-        pass
-    try:
-        data['age'] = request_json['age']
-    except:
-        pass
-    try:
-        data['team'] = request_json['team']
-    except:
-        pass
-    updatedUser = db.updateById('users', int(userID), data)
-    if (updatedUser is None):
-        return create_response({}, 404, 'No such user!')
-    else:
-        return create_response(updatedUser)
-
-@app.route('/users/<userID>', methods = ['DELETE'])
-def deleteUser(userID):
-    if (db.getById('users',int(userID)) is None):
-        return create_response({}, 404, 'Couldn\'t delete!')
-    else:
-        db.deleteById('users', int(userID))
-        return create_response({}, 200, 'Delete successful!')
 
 @app.errorhandler(500)
 def internal_error(error):
@@ -180,4 +102,4 @@ if not app.debug:
     app.logger.info('errors')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=33507)
+    app.run(debug=True)
