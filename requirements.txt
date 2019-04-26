@@ -1,6 +1,26 @@
-Flask-WTF
-WTForms
-coverage
-requests
-# ecdsa
-# pycrypto
+Flask==1.0.2
+Flask-Cors==3.0.7
+Flask-Migrate==2.1.1
+Flask-Script==2.0.6
+Flask-SQLAlchemy==2.3.2
+Flask-WTF==0.14.2
+numpy==1.16.2
+pandas==0.23.4
+pandas-datareader==0.7.0
+py==1.7.0
+python-dateutil==2.7.3
+python-editor==1.0.4
+pyti==0.2.2
+pyttsx3==2.7
+pytz==2018.5
+requests==2.21.0
+scipy==1.2.1
+tzlocal==1.5.1
+urllib3==1.24.1
+uuid==1.30
+virtualenv==16.4.0
+websocket-client==0.54.0
+websockets==7.0
+wrapt==1.11.1
+WTForms==2.2.1
+yarl==1.2.6
