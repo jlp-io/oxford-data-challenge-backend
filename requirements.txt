@@ -3,5 +3,4 @@ WTForms
 coverage
 requests
 # ecdsa
-# paramiko
 # pycrypto

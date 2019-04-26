@@ -73,7 +73,7 @@ def get_university_list():
 
 @app.route('/')
 def about():
-    return render_template('templates/pages/placeholder.about.html')
+    return render_template('templates/pages/index.html')
 
 @app.route('/login')
 def login():
