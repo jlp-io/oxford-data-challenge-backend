@@ -1,0 +1,1 @@
+heroku ps:scale web=1 --app oxford-data-challenge-backend	when no web process error
