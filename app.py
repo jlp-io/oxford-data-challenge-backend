@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
-from flask.ext.heroku import Heroku
+from flask_heroku import Heroku
 import logging
 from logging import Formatter, FileHandler
 from forms import *
