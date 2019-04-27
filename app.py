@@ -64,23 +64,8 @@ def get_country_data(country):
     return create_response(data)
 
 @app.route('/')
-def about():
-    return render_template('templates/pages/index.html')
-
-@app.route('/login')
-def login():
-    form = LoginForm(request.form)
-    return render_template('forms/login.html', form=form)
-
-@app.route('/register')
-def register():
-    form = RegisterForm(request.form)
-    return render_template('forms/register.html', form=form)
-
-@app.route('/forgot')
-def forgot():
-    form = ForgotForm(request.form)
-    return render_template('forms/forgot.html', form=form)
+def something():
+    return render_template('index.html')
 
 @app.errorhandler(500)
 def internal_error(error):
