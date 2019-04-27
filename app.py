@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
+from flask.ext.heroku import Heroku
 import logging
 from logging import Formatter, FileHandler
 from forms import *
@@ -12,8 +13,10 @@ import model.mockdb_interface as db
 #----------------------------------------------------------------------------#
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 CORS(app)
-app.config.from_object('config')
+heroku = Heroku(app)
+#app.config.from_object('config')
 dataset = pd.read_csv('model/diet-compositions-by-commodity-categories-fao-2017.csv', low_memory=False)
 keys = dataset.columns.values.tolist()
 
