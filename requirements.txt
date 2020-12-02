@@ -23,7 +23,7 @@ uuid==1.30
 virtualenv==16.4.0
 websocket-client==0.54.0
 websockets==7.0
-werkzeug==0.14.1
+werkzeug==1.0.1
 wrapt==1.11.1
 WTForms==2.2.1
 yarl==1.2.6
