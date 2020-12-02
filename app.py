@@ -44,21 +44,6 @@ def start():
     return create_response(data);
 	
 
-@app.route('/commissaryApp/<order>', methods=['POST'])
-def commissaryApp/(order):
-	"""
-	data = {
-        'countries': order
-    }
-	msg = Message("Hello",
-                  sender="from@example.com",
-                  recipients=["to@example.com"])
-	msg.body = "https://docs.google.com/spreadsheets/d/1kB4_XmHRYuJnJOhAgq4Tft4GP3zwADKXDBesukIdoPU/edit#gid=0"
-	msg.html = "<b>testing</b>"
-	mail.send(msg)
-	"""
-    return create_response(order);
-
 @app.route('/getCountryData/<country>')
 def get_country_data(country):
     country_data = list()
