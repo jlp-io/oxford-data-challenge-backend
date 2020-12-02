@@ -28,6 +28,9 @@ mail = Mail(app)
 def home():
     return render_template('pages/placeholder.home.html')
 
+@app.route('/index')
+def index():
+    return render_template('pages/placeholder.home.html')
 
 @app.route('/about')
 def about():
