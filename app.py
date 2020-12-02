@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
-from flask_mail import Message
+from flask_mail import Message, Mail
 from flask_heroku import Heroku
 import logging
 from logging import Formatter, FileHandler
@@ -51,13 +51,13 @@ def commissaryOrder(order):
     }
 	"""
 	msg = Message("Hello",
-                  sender="from@example.com",
-                  recipients=["to@example.com"])
+		sender="futianpsm@gmail.com",
+		recipients=["jap00031@students.stir.ac.uk"])
 	msg.body = "https://docs.google.com/spreadsheets/d/1kB4_XmHRYuJnJOhAgq4Tft4GP3zwADKXDBesukIdoPU/edit#gid=0"
 	msg.html = "<b>testing</b>"
 	mail.send(msg)
 	"""
-    return create_response(data);
+	return create_response(data);
 
 @app.route('/getCountryData/<country>')
 def get_country_data(country):
