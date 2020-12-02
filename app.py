@@ -22,6 +22,37 @@ dataset = pd.read_csv('model/diet-compositions-by-commodity-categories-fao-2017.
 keys = dataset.columns.values.tolist()
 mail = Mail(app)
 
+#placeholder routes
+
+@app.route('/')
+def home():
+    return render_template('pages/placeholder.home.html')
+
+
+@app.route('/about')
+def about():
+    return render_template('pages/placeholder.about.html')
+
+
+@app.route('/login')
+def login():
+    form = LoginForm(request.form)
+    return render_template('forms/login.html', form=form)
+
+
+@app.route('/register')
+def register():
+    form = RegisterForm(request.form)
+    return render_template('forms/register.html', form=form)
+
+
+@app.route('/forgot')
+def forgot():
+    form = ForgotForm(request.form)
+    return render_template('forms/forgot.html', form=form)
+
+#legitimate routes
+
 def create_response(data={}, status=200, message=''):
     response = {
         'success': 200 <= status < 300,
@@ -82,29 +113,7 @@ def get_country_data(country):
     data['countryData'] = country_data
     return create_response(data)
 
-"""Routes for placeholders"""
-@app.route('/about')
-def about():
-    return render_template('pages/placeholder.about.html')
-
-@app.route('/login')
-def login():
-    form = LoginForm(request.form)
-    return render_template('forms/login.html', form=form)
-
-@app.route('/register')
-def register():
-    form = RegisterForm(request.form)
-    return render_template('forms/register.html', form=form)
-
-@app.route('/forgot')
-def forgot():
-    form = ForgotForm(request.form)
-    return render_template('forms/forgot.html', form=form)
-
-@app.route('/')
-def home():
-    return render_template('index.html')
+#Error handlers.
 
 @app.errorhandler(500)
 def internal_error(error):
@@ -127,4 +136,4 @@ if not app.debug:
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port)
