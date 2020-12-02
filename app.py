@@ -45,7 +45,7 @@ def start():
 	
 
 @app.route('/commissaryApp/<order>', methods=['POST'])
-def commissaryApp/(order):
+def commissaryApp(order):
 	"""
 	data = {
         'countries': order
