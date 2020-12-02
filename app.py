@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
+from flask_mail import Message
 from flask_heroku import Heroku
 import logging
 from logging import Formatter, FileHandler
@@ -19,6 +20,7 @@ heroku = Heroku(app)
 #app.config.from_object('config')
 dataset = pd.read_csv('model/diet-compositions-by-commodity-categories-fao-2017.csv', low_memory=False)
 keys = dataset.columns.values.tolist()
+mail = Mail(app)
 
 def create_response(data={}, status=200, message=''):
     response = {
@@ -37,9 +39,25 @@ def start():
         entities_raw.append(dataset['Entity'][i])
     entities_clean = list(set(entities_raw))
     data = {
-        'countries': entities_clean
+        'countries': entities_clean     
     }
     return create_response(data);
+	
+
+@app.route('/commissaryApp/<order>', methods=['POST'])
+def commissaryApp/(order):
+	"""
+	data = {
+        'countries': order
+    }
+	msg = Message("Hello",
+                  sender="from@example.com",
+                  recipients=["to@example.com"])
+	msg.body = "https://docs.google.com/spreadsheets/d/1kB4_XmHRYuJnJOhAgq4Tft4GP3zwADKXDBesukIdoPU/edit#gid=0"
+	msg.html = "<b>testing</b>"
+	mail.send(msg)
+	"""
+    return create_response(order);
 
 @app.route('/getCountryData/<country>')
 def get_country_data(country):
