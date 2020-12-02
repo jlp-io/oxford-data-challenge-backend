@@ -83,7 +83,7 @@ def get_country_data(country):
     return create_response(data)
 
 @app.route('/')
-def something():
+def home():
     return render_template('index.html')
 
 @app.errorhandler(500)
