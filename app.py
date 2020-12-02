@@ -43,24 +43,22 @@ def start():
     }
     return create_response(data);
 	
-
 @app.route('/commissaryOrder/<order>')
 def commissaryOrder(order):
 	data = {
         'countries': order
     }
 	"""
-	msg = Message("Hello",
-		sender="futianpsm@gmail.com",
-		recipients=["jap00031@students.stir.ac.uk"])
-	msg.body = "https://docs.google.com/spreadsheets/d/1kB4_XmHRYuJnJOhAgq4Tft4GP3zwADKXDBesukIdoPU/edit#gid=0"
+	msg = Message("Hello",sender="futianpsm@gmail.com",recipients=["jap00031@students.stir.ac.uk"])
+	msg.body = order
 	msg.html = "<b>testing</b>"
 	mail.send(msg)
 	"""
+	
 	return create_response(data);
 
 @app.route('/getCountryData/<country>')
-def get_country_data(country):
+def get_country_data(country):	
     country_data = list()
     for i in range(0,len(dataset['Entity'])):
         if dataset['Entity'][i] == country:
