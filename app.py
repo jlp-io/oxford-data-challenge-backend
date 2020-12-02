@@ -46,10 +46,10 @@ def start():
 
 @app.route('/commissaryOrder/<order>')
 def commissaryOrder(order):
-	"""
-		data = {
+	data = {
         'countries': order
     }
+	"""
 	msg = Message("Hello",
                   sender="from@example.com",
                   recipients=["to@example.com"])
@@ -57,7 +57,7 @@ def commissaryOrder(order):
 	msg.html = "<b>testing</b>"
 	mail.send(msg)
 	"""
-    return create_response(order);
+    return create_response(data);
 
 @app.route('/getCountryData/<country>')
 def get_country_data(country):
